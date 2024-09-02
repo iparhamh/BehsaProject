@@ -1,0 +1,100 @@
+:root {
+    --pink-text-color: #fdc6ff;
+    --text-color: #c6efff;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #001560;
+}
+
+body::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+@keyframes welcom-animation {
+    from {
+        opacity: 0;
+        top: -50px;
+    }
+    to {
+        opacity: 1;
+        top: 10px;
+    }
+}
+
+.display-4 {
+    position: relative;
+    color: #000000;
+    animation-name: welcom-animation;
+    animation-duration: 3s;
+}
+
+.btn.userTbBtns {
+    color: var(--bs-white);
+    background-color: var(--bs-blue);
+}
+
+.btn.userTbBtns.delete {
+    color: var(--bs-white);
+    background-color: var(--bs-red);
+}
+
+#game-screen {
+    width: 100vw;
+    height: 100vh;
+}
+
+#game-canvas {
+    background-image: linear-gradient(#001a7c, #4700a3);
+    touch-action: none;
+    z-index: -1;
+}
+
+.border-top.footer.text-muted {
+    background-color: #2a0060;
+}
+
+.container.privacy {
+    color: var(--pink-text-color);
+}
+
+a:link {
+    color: #ff0010;
+}
+
+a:visited {
+    color: #f000a0;
+}
+
+.navbar {
+    background-color: #001a7c;
+}
+
+.nav-item a, .table {
+    color: var(--text-color) !important;
+}
+
+.control-label, .row, h1 {
+    color: var(--bs-white);
+}

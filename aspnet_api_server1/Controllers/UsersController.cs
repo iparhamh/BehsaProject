@@ -1,16 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MyApiServer.Data;
-using MyApiServer.Models;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MyApiServer.Data;
+using MyApiServer.Models;
 
 namespace MyApiServer.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : Controller
     {
         private readonly AppDbContext _context;
 
@@ -18,6 +19,8 @@ namespace MyApiServer.Controllers
         {
             _context = context;
         }
+
+        // API CRUD Operations
 
         // GET: api/users
         [HttpGet]

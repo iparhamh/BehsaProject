@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using System.Text;
 using MyApiServer.Models; // Adjust this namespace according to your project
-using MyApiServer.Data; // Adjust this namespace according to your project
+using MyApiServer.Data;  // Adjust this namespace according to your project
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         new MySqlServerVersion(new Version(8, 0, 33)))); // Adjust the MySQL server version as needed
 
 // Add services to the container
-builder.Services.AddControllers();
+//builder.Services.AddControllers(); // Only add controllers (no Razor Pages or Views)
+builder.Services.AddControllersWithViews(); // Supports both controllers and views, including TempData
+
 
 // Configure JWT Authentication
 var jwtSection = builder.Configuration.GetSection("Jwt");
@@ -70,11 +71,16 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 app.UseRouting(); // Ensure routing is added
 
 app.UseAuthentication(); // Ensure authentication is added
 app.UseAuthorization();  // Ensure authorization is added
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}"); // MVC route
 
 app.MapControllers(); // Map controllers
 
